@@ -4,15 +4,15 @@
 
     <parameter name="url" value="http://jsfiddle.net/u58n1wfs/5/show/"/>
 
-    <test name="test01" >
+    <test name="test01">
 
         <parameter name="nombre" value="Oscar01"/>
         <parameter name="apellido" value="Valerio"/>
         <parameter name="cedula" value="12345789"/>
 
         <classes>
-            <class name="com.testsuites.examples.SuiteEjemplos01" />
-            <class name="com.testsuites.examples.SuiteEjemplos02" />
+            <class name="com.testsuites.examples.SuiteEjemplos01"/>
+            <class name="com.testsuites.examples.SuiteEjemplos02"/>
         </classes>
     </test>
 </suite>

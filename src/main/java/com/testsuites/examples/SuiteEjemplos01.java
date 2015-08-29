@@ -13,7 +13,7 @@ public class SuiteEjemplos01 extends TestCaseBase {
 
     @Test(groups = {"smoke", "full"})
     @Parameters({"nombre", "apellido", "cedula"})
-    public void test01(String nombre, String apellido, String cedula){
+    public void test01(String nombre, String apellido, String cedula) {
 
         System.out.print("\n---- SE ESTA EJECUTANDO EL TEST 01");
         TestPage testPage = PageFactory.initElements(driver, TestPage.class);
@@ -24,9 +24,9 @@ public class SuiteEjemplos01 extends TestCaseBase {
 
     }
 
-     @Test
-     @Parameters({"nombre", "apellido", "cedula"})
-     public void test02(String nombre, String apellido, String cedula){
+    @Test
+    @Parameters({"nombre", "apellido", "cedula"})
+    public void test02(String nombre, String apellido, String cedula) {
 
         System.out.print("\n---- SE ESTA EJECUTANDO EL TEST 02");
         TestPage testPage = PageFactory.initElements(driver, TestPage.class);
@@ -39,7 +39,7 @@ public class SuiteEjemplos01 extends TestCaseBase {
 
     @Test
     @Parameters({"nombre", "apellido", "cedula"})
-    public void test03(String nombre, String apellido, String cedula){
+    public void test03(String nombre, String apellido, String cedula) {
 
         System.out.print("\n---- SE ESTA EJECUTANDO EL TEST 03");
         TestPage testPage = PageFactory.initElements(driver, TestPage.class);

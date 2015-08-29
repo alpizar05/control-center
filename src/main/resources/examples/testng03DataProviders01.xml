@@ -1,12 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Suite1" verbose="1" >
+<suite name="Suite1" verbose="1">
 
     <parameter name="url" value="http://jsfiddle.net/u58n1wfs/5/show/"/>
 
     <test name="test01">
         <classes>
-            <class name="com.testsuites.examples.SuiteEjemplos03" />
+            <class name="com.testsuites.examples.SuiteEjemplos03"/>
         </classes>
     </test>
 </suite>

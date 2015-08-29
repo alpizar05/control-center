@@ -4,7 +4,7 @@
 
     <parameter name="url" value="http://jsfiddle.net/u58n1wfs/5/show/"/>
 
-    <test name="test01" >
+    <test name="test01">
         <groups>
             <run>
                 <include name="full_smoke"/>
@@ -12,8 +12,8 @@
             </run>
         </groups>
         <classes>
-            <class name="com.training.TestNG.TareaTestNG.SuiteTareaTestNG01" />
-            <class name="com.training.TestNG.TareaTestNG.SuiteTareaTestNG02" />
+            <class name="com.training.TestNG.TareaTestNG.SuiteTareaTestNG01"/>
+            <class name="com.training.TestNG.TareaTestNG.SuiteTareaTestNG02"/>
         </classes>
     </test>
 </suite>

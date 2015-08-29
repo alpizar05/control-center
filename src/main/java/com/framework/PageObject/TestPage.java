@@ -11,11 +11,11 @@ public class TestPage extends TestPageFactory {
         super(driver);
     }
 
-    public void moveToFrame(){
+    public void moveToFrame() {
         getDriver().switchTo().frame(iframeResult);
     }
 
-    public void fillFields(String nombreValor, String apellidoValor, String cedulaValor){
+    public void fillFields(String nombreValor, String apellidoValor, String cedulaValor) {
         nombre.clear();
         nombre.sendKeys(nombreValor);
         apellido.clear();
@@ -24,11 +24,11 @@ public class TestPage extends TestPageFactory {
         cedula.sendKeys(cedulaValor);
     }
 
-    public void clickOnButton(){
+    public void clickOnButton() {
         btnClickMe.click();
     }
 
-    public void closeAlert(){
+    public void closeAlert() {
         getDriver().switchTo().alert().accept();
         getDriver().switchTo().defaultContent();
 
