@@ -15,5 +15,5 @@ public class ApplicationsPageFactory extends PageBase {
     }
 
     @FindBy (xpath = ".//*[@id='ng-app']//span [contains(text(),'Applications')]")
-    protected WebElement appTitleElement;
+    protected WebElement applicationTitleElement;
 }
