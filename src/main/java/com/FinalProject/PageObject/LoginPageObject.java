@@ -14,6 +14,10 @@ public class LoginPageObject extends LoginPageFactory {
         super(driver);
     }
 
+    public boolean checkPage(){
+        return mainLogoElement.isDisplayed();
+    }
+
     public void enterUser(String user){
         getActionBot().sendKeys(userFieldElement, user);
     }
@@ -22,8 +26,8 @@ public class LoginPageObject extends LoginPageFactory {
         getActionBot().sendKeys(pwdFieldElement, pwd);
     }
 
-    public ApplicationPageObject clickOnLogIn(){
-        return (ApplicationPageObject) navigateToNextPage(logInButtonElement, ApplicationPageObject.class);
+    public TopMainMenuPageObject clickOnLogIn(){
+        return (TopMainMenuPageObject) navigateToNextPage(logInButtonElement, TopMainMenuPageObject.class);
     }
 
 

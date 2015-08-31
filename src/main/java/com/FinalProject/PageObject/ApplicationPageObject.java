@@ -13,7 +13,7 @@ public class ApplicationPageObject extends ApplicationsPageFactory {
     }
 
     public boolean checkPage(){
-        return appTitleElement.isDisplayed();
+        return applicationTitleElement.isDisplayed();
     }
 
 

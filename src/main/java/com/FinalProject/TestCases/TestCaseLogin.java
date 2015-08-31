@@ -2,7 +2,7 @@ package com.FinalProject.TestCases;
 
 import com.FinalProject.Data.PublicData;
 import com.FinalProject.PageObject.LoginPageObject;
-import com.FinalProject.PageObject.ApplicationPageObject;
+import com.FinalProject.PageObject.TopMainMenuPageObject;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
  */
 public class TestCaseLogin extends TestCaseBase{
         @Test
-        public void loginZenoss(){
+        public void loginRoot(){
 
         /*Parametros*/
             String user = PublicData.USER;
@@ -23,9 +23,13 @@ public class TestCaseLogin extends TestCaseBase{
 
             LoginPageObject controlCenter = PageFactory.initElements(driver, LoginPageObject.class);
 
+            //Enter user name
             controlCenter.enterUser(user);
+            //Enter password
             controlCenter.enterPassword(password);
-            ApplicationPageObject applicationPage = controlCenter.clickOnLogIn();
-            Assert.assertTrue(applicationPage.checkPage(), "The Application page was not displayed");
+            //Click on Log In button
+            TopMainMenuPageObject topMainMenu = controlCenter.clickOnLogIn();
+            //Main menu is displayed
+            Assert.assertTrue(topMainMenu.checkPage(), "Top main menu page was not displayed");
         }
     }

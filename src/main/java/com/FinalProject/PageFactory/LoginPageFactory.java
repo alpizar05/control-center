@@ -17,6 +17,10 @@ public class LoginPageFactory extends PageBase{
         super(driver);
     }
 
+    @FindBy(className = "loginLogo")
+    protected WebElement mainLogoElement;
+
+
     @FindBy(xpath = ".//*[@id='login']/input [@placeholder='Username']")
     protected WebElement userFieldElement;
 

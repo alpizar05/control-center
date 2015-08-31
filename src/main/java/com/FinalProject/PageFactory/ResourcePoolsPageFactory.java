@@ -19,11 +19,13 @@ public class ResourcePoolsPageFactory extends PageBase{
     protected WebElement addResourceButtonElement;
 
     @FindBy(id = "new_pool_name")
-    protected WebElement poolNameElement;
+    protected WebElement poolNameFieldElement;
 
     @FindBy(id = "new_pool_description")
-    protected WebElement poolDescriptionName;
+    protected WebElement poolDescriptionFieldElement;
 
     @FindBy(xpath = ".//*[@id='ng-app']//button [@class = 'btn btn-primary submit']")
-    protected WebElement addPoolButton;
+    protected WebElement submitPoolButton;
+
+
 }
