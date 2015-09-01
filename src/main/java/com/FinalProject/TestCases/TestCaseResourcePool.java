@@ -45,11 +45,11 @@ public class TestCaseResourcePool extends TestCaseBase {
         //Click on Submit button
         resourcePool.clickSubmitPool();
         //Resource Pool is added
-        Assert.assertTrue(resourcePool.checkPoolName(), "Resource pool was not added");
+        Assert.assertTrue(resourcePool.checkPoolName(testResourceName), "Resource pool was not added");
         //Click on log out
         LoginPageObject loginPage = topMainMenu.clickLogOutButton();
         //Log In page is displayed
-        Assert.assertTrue(loginPage.checkPage(), "Resource pool was not added");
+        Assert.assertTrue(loginPage.checkPage(), "Log Out Action is failing");
 
     }
 
@@ -57,6 +57,41 @@ public class TestCaseResourcePool extends TestCaseBase {
 
     @Test
     public void DeleteResourcePool() {
+
+         /*Parametros*/
+        String user = PublicData.USER;
+        String password = PublicData.PASS;
+        String testResourceName = "TestResourceName";
+
+        LoginPageObject controlCenter = PageFactory.initElements(driver, LoginPageObject.class);
+
+        //Enter user name
+        controlCenter.enterUser(user);
+        //Enter password
+        controlCenter.enterPassword(password);
+        //Click on Log In button
+        TopMainMenuPageObject topMainMenu = controlCenter.clickOnLogIn();
+        //Main menu is displayed
+        Assert.assertTrue(topMainMenu.checkPage(), "Top main menu page was not displayed");
+        //Click on Resource Pool otp menu option
+        ResourcePoolPageObject resourcePool = topMainMenu.clickResourcePool();
+        //Resource Pool page  is displayed
+        Assert.assertTrue(resourcePool.checkPage(), "Resource pool page was not displayed");
+        //Click on Delete button
+        resourcePool.clickDeletePool(testResourceName);
+        //Resource Pool is deleted
+        Assert.assertFalse(resourcePool.checkPoolName(testResourceName), "Resource pool was not deleted");
+        //Click on log out
+        LoginPageObject loginPage = topMainMenu.clickLogOutButton();
+        //Log In page is displayed
+        Assert.assertTrue(loginPage.checkPage(), "Log Out Action is failing");
+
+
+
+
+
+
+
     }
 
 }

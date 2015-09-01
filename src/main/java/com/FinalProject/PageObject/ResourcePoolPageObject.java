@@ -11,6 +11,10 @@ import org.openqa.selenium.By;
  */
 public class ResourcePoolPageObject extends ResourcePoolsPageFactory {
 
+    String xpathResourcePoolLine = ".//*[@id='ng-app']//td [contains(text(),'%s')]";
+    //String getXpathResourcePoolDeleteButton = xpathResourcePoolLine + "/../td/button";
+    String getXpathResourcePoolDeleteButton = String.format("%s/../td/button",xpathResourcePoolLine);
+
     public ResourcePoolPageObject(WebDriver driver) {
         super(driver);
     }
@@ -36,12 +40,18 @@ public class ResourcePoolPageObject extends ResourcePoolsPageFactory {
         getActionBot().click(submitPoolButton);
     }
 
-    public boolean checkPoolName(){
+
+    public boolean checkPoolName(String resourcePoolName){
         WebElement poolNameLine;
-        String xpathTmp;
-        xpathTmp = ".//*[@id='ng-app']//td [contains(text(),'"+ poolNameFieldElement.getAttribute("value") + "')]";
-        poolNameLine = getDriver().findElement(By.xpath(xpathTmp));
+        poolNameLine = getDriver().findElement(By.xpath(String.format(xpathResourcePoolLine,resourcePoolName)));
         return poolNameLine.isDisplayed();
     }
+
+    public void clickDeletePool(String resourcePoolName){
+       WebElement poolDeleteButton = getDriver().findElement(By.xpath(String.format(getXpathResourcePoolDeleteButton,resourcePoolName)));
+        getActionBot().click(poolDeleteButton);
+
+    }
+
 
 }
