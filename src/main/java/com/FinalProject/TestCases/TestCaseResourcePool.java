@@ -38,19 +38,24 @@ public class TestCaseResourcePool extends TestCaseBase {
         Assert.assertTrue(resourcePool.checkPage(), "Resource pool page was not displayed");
         //Click on Add resource pool
         resourcePool.clickAddPool();
+        //Check Add Resource Pool Window is open
+        Assert.assertTrue(resourcePool.checkAddWindowTittle(), "Add resource pool Window is not displayed");
         //Enter Resource Pool Name
         resourcePool.enterPoolName(testResourceName);
         //Enter Resource Pool Description
         resourcePool.enterPoolDescription(testResourceDesc);
         //Click on Submit button
         resourcePool.clickSubmitPool();
+        //Flare title displays
+        Assert.assertTrue(resourcePool.checkAddResourceFlareTitle(), "Error in Flare Message");
+        //Flare Message displays
+        Assert.assertTrue(resourcePool.checkAddResourceFlareMessage(), "Error in Flare Message");
         //Resource Pool is added
         Assert.assertTrue(resourcePool.checkPoolName(testResourceName), "Resource pool was not added");
         //Click on log out
         LoginPageObject loginPage = topMainMenu.clickLogOutButton();
         //Log In page is displayed
         Assert.assertTrue(loginPage.checkPage(), "Log Out Action is failing");
-
     }
 
 
@@ -79,6 +84,16 @@ public class TestCaseResourcePool extends TestCaseBase {
         Assert.assertTrue(resourcePool.checkPage(), "Resource pool page was not displayed");
         //Click on Delete button
         resourcePool.clickDeletePool(testResourceName);
+        //Confirmation Page is displayed
+        resourcePool.checkDeleteWindowTittle();
+        //ConfirmationMessage is displayed
+        resourcePool.checkDeleteConfirmationMessage(testResourceName);
+        //Click on confirmation button
+        resourcePool.clickDeleteReourceConfirmationButton();
+        //Flare tittle is displayed
+        resourcePool.checkDeleteFlareTitle();
+        //Flare message is correct
+        resourcePool.checkDeleteFlareMessage(testResourceName);
         //Resource Pool is deleted
         Assert.assertFalse(resourcePool.checkPoolName(testResourceName), "Resource pool was not deleted");
         //Click on log out

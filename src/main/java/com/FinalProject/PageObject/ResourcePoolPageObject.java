@@ -14,12 +14,14 @@ public class ResourcePoolPageObject extends ResourcePoolsPageFactory {
     String xpathResourcePoolLine = ".//*[@id='ng-app']//td [contains(text(),'%s')]";
     //String getXpathResourcePoolDeleteButton = xpathResourcePoolLine + "/../td/button";
     String getXpathResourcePoolDeleteButton = String.format("%s/../td/button",xpathResourcePoolLine);
+    String deleteMessage = String.format("This action will permanently delete the resource pool %s");
+    String getXpathDeleteResourceFlareMessage = String.format(".//*[@id='notifications']//span[contains(text(),'%s')]");
 
     public ResourcePoolPageObject(WebDriver driver) {
         super(driver);
     }
 
-    public boolean checkPage() {return resourcePoolTitleElement.isDisplayed();}
+    public boolean checkPage() {return mainResourcePoolTitleElement.isDisplayed();}
 
     public void clickAddPool(){
         getActionBot().click(addResourceButtonElement);
@@ -37,7 +39,7 @@ public class ResourcePoolPageObject extends ResourcePoolsPageFactory {
 
 
     public void clickSubmitPool(){
-        getActionBot().click(submitPoolButton);
+        getActionBot().click(submitPoolButtonElement);
     }
 
 
@@ -53,5 +55,44 @@ public class ResourcePoolPageObject extends ResourcePoolsPageFactory {
 
     }
 
+    public boolean checkAddWindowTittle() {
 
+        return (addResourceWindowTitleElement.isDisplayed());
+
+    }
+
+    public boolean checkAddResourceFlareTitle(){
+        return (addResourceFlareTitleElement.isDisplayed());
+    }
+    public boolean checkAddResourceFlareMessage(){
+        return (addResourceFlareMessageElement.isDisplayed());
+    }
+
+    public boolean checkDeleteWindowTittle() {
+
+        return (deleteResourceWindowTitleElement.isDisplayed());
+
+    }
+
+
+    public boolean checkDeleteConfirmationMessage(String resourcePoolName){
+
+        return (deleteResourcePoolConfirmationMessageElement.getText().matches(String.format(deleteMessage,resourcePoolName)));
+    }
+
+    public void clickDeleteReourceConfirmationButton(){
+        getActionBot().click(deleteResourceConfirmationButtonElement);
+    }
+
+    public boolean checkDeleteFlareTitle(){
+
+        return (deleteResourceFlareTittle.isDisplayed());
+
+    }
+
+    public boolean checkDeleteFlareMessage (String resourcePoolName){
+
+        WebElement deleteFlareMessage = getDriver().findElement(By.xpath(String.format(getXpathDeleteResourceFlareMessage,resourcePoolName)));
+        return (deleteFlareMessage.isDisplayed());
+    }
 }
