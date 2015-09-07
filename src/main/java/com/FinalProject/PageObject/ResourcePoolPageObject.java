@@ -14,8 +14,8 @@ public class ResourcePoolPageObject extends ResourcePoolsPageFactory {
     String xpathResourcePoolLine = ".//*[@id='ng-app']//td [contains(text(),'%s')]";
     //String getXpathResourcePoolDeleteButton = xpathResourcePoolLine + "/../td/button";
     String getXpathResourcePoolDeleteButton = String.format("%s/../td/button",xpathResourcePoolLine);
-    String deleteMessage = String.format("This action will permanently delete the resource pool %s");
-    String getXpathDeleteResourceFlareMessage = String.format(".//*[@id='notifications']//span[contains(text(),'%s')]");
+    String deleteMessage = "This action will permanently delete the resource pool %s";
+    String getXpathDeleteResourceFlareMessage = ".//*[@id='notifications']//span[contains(text(),'%s')]";
 
     public ResourcePoolPageObject(WebDriver driver) {
         super(driver);
@@ -44,9 +44,7 @@ public class ResourcePoolPageObject extends ResourcePoolsPageFactory {
 
 
     public boolean checkPoolName(String resourcePoolName){
-        WebElement poolNameLine;
-        poolNameLine = getDriver().findElement(By.xpath(String.format(xpathResourcePoolLine,resourcePoolName)));
-        return poolNameLine.isDisplayed();
+         return (getActionBot().findElement(String.format(xpathResourcePoolLine,resourcePoolName)));
     }
 
     public void clickDeletePool(String resourcePoolName){

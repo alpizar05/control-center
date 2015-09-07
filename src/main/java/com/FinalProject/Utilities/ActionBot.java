@@ -19,6 +19,18 @@ public class ActionBot {
         element.sendKeys(text);
     }
 
+    public boolean  findElement(String elementXpath){
+
+        try {
+            WebElement poolNameLine;
+            poolNameLine = driver.findElement(By.xpath(elementXpath));
+            return poolNameLine.isDisplayed();
+
+        }catch (TimeoutException te) {
+            return false;
+        }
+    }
+
     public void click(WebElement element) {
         Utilities.waitForElementDisplayed(driver, element);
         element.click();
