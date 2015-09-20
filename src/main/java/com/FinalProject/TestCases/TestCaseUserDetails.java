@@ -51,6 +51,43 @@ public class TestCaseUserDetails extends TestCaseBase {
         userDetails.clickCloseButton();
         }
 
+    @Test
+    public void ChangeLanguageEnglish(){
+
+        /*Parametros*/
+        String user = PublicData.USER;
+        String password = PublicData.PASS;
+        String testResourceName = "TestResourceName";
+        String testResourceDesc = "TestResourceDesc";
+
+        LoginPageObject controlCenter = PageFactory.initElements(driver, LoginPageObject.class);
+
+        //Enter user name
+        controlCenter.enterUser(user);
+        //Enter password
+        controlCenter.enterPassword(password);
+        //Click on Log In button
+        TopMainMenuPageObject topMainMenu = controlCenter.clickOnLogIn();
+        //Main menu is displayed
+        Assert.assertTrue(topMainMenu.checkPage(), "Top main menu page was not displayed");
+        //Click on User Details  menu option
+        UserDetailsPageObject userDetails = topMainMenu.clickUserDetails();
+        //User Details page  is displayed
+        Assert.assertTrue(userDetails.checkPage(), "User details page was not displayed");
+        //click on spanishButton
+        userDetails.clickEnglishhButton();
+        //Username label is displayed in english
+        userDetails.checkUsernameEnglish();
+        //User is displayed
+        userDetails.checkUserNameValue(user);
+        //Message label is displayed in english
+        userDetails.checkMessageEnglish();
+        //Clear button is displayed in Spanish
+        userDetails.checkEnglishClearButton();
+        //CloseWindow
+        userDetails.clickCloseButton();
+    }
 
 
-}
+
+    }
