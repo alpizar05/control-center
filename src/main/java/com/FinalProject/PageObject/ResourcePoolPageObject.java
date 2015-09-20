@@ -12,7 +12,6 @@ import org.openqa.selenium.By;
 public class ResourcePoolPageObject extends ResourcePoolsPageFactory {
 
     String xpathResourcePoolLine = ".//*[@id='ng-app']//td [contains(text(),'%s')]";
-    //String getXpathResourcePoolDeleteButton = xpathResourcePoolLine + "/../td/button";
     String getXpathResourcePoolDeleteButton = String.format("%s/../td/button",xpathResourcePoolLine);
     String deleteMessage = "This action will permanently delete the resource pool %s";
     String getXpathDeleteResourceFlareMessage = ".//*[@id='notifications']//span[contains(text(),'%s')]";

@@ -26,6 +26,9 @@ public class TopMainMenuPageObject extends TopMainMenuPageFactory{
     public  ResourcePoolPageObject clickResourcePool(){
         return (ResourcePoolPageObject) navigateToNextPage(resourcePoolsLinkElement, ResourcePoolPageObject.class);
     }
+    public  UserDetailsPageObject clickUserDetails(){
+        return (UserDetailsPageObject) navigateToNextPage(UserDetailsLinkElement, UserDetailsPageObject.class);
+    }
 
 
 

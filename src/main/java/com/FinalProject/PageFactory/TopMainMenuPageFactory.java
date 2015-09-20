@@ -32,5 +32,6 @@ public class TopMainMenuPageFactory extends PageBase{
     @FindBy (xpath = ".//*[@id='ng-app']//a [contains(text(),'Hosts')]")
     protected WebElement hostLinkElement;
 
-
+    @FindBy (xpath= ".//*[@id='ng-app']//button[@ng-click='modalUserDetails()']")
+    protected WebElement UserDetailsLinkElement;
 }
