@@ -94,15 +94,10 @@ public class TestCaseResourcePool extends TestCaseBase {
         resourcePool.checkDeleteFlareTitle();
         //Flare message is correct
         resourcePool.checkDeleteFlareMessage(testResourceName);
-        //Resource Pool is deleted
-        Assert.assertFalse(resourcePool.checkPoolName(testResourceName), "Resource pool was not deleted");
         //Click on log out
         LoginPageObject loginPage = topMainMenu.clickLogOutButton();
         //Log In page is displayed
         Assert.assertTrue(loginPage.checkPage(), "Log Out Action is failing");
-
-
-
 
 
 
