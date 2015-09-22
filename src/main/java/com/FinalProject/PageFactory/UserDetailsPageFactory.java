@@ -14,9 +14,9 @@ public class UserDetailsPageFactory extends PageBase {
     protected WebElement userDetailsTitleElement;
     @FindBy(xpath = ".//*[@id='ng-app']//span[contains(text(),'User Details')]/../button")
     protected WebElement userDetailsCloseWindowButton;
-    @FindBy(xpath = ".//*[@id='ng-app']//p[contains(text(),'Username')]")
+    @FindBy(xpath = ".//*[@id='ng-app']//span[contains(text(),'Username')]")
     protected WebElement englishUserNameLabelElement;
-    @FindBy(xpath = ".//*[@id='ng-app']//p[contains(text(),'Usuario')]")
+    @FindBy(xpath = ".//*[@id='ng-app']//span[contains(text(),'Usuario')]")
     protected WebElement spanishUserNameLabelElement;
     @FindBy(xpath = ".//*[@id='ng-app']//input[@value='en_US']")
     protected WebElement englishRadioElement;

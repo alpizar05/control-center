@@ -32,7 +32,7 @@ public class ResourcePoolsPageFactory extends PageBase {
     protected WebElement deleteResourcePoolConfirmationMessageElement;
     @FindBy(xpath = ".//*[@id='ng-app']//button[contains(text(),'Remove Pool')]")
     protected WebElement deleteResourceConfirmationButtonElement;
-    @FindBy(xpath = ".//*[@id='notifications']//span[contains(text(),'Removed pool')]")
+    @FindBy(xpath = ".//*[@id='notifications']//span[contains(text(),'Removed Pool')]")
     protected WebElement deleteResourceFlareTittle;
 
     public ResourcePoolsPageFactory(WebDriver driver) {

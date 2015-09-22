@@ -39,8 +39,6 @@ public class TestCaseUserDetails extends TestCaseBase {
         userDetails.clickSpanishButton();
         //Username label is displayed in spanish
         userDetails.checkUsernameSpanish();
-        //User is displayed
-        userDetails.checkUserNameValue(user);
         //Message label is displayed in spanish
         userDetails.checkMessageLabelSpanish();
         //Clear button is displayed in Spanish
@@ -77,8 +75,6 @@ public class TestCaseUserDetails extends TestCaseBase {
         userDetails.clickEnglishhButton();
         //Username label is displayed in english
         userDetails.checkUsernameEnglish();
-        //User is displayed
-        userDetails.checkUserNameValue(user);
         //Message label is displayed in english
         userDetails.checkMessageEnglish();
         //Clear button is displayed in Spanish

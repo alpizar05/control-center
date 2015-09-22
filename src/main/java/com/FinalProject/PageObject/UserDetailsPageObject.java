@@ -11,7 +11,7 @@ import sun.reflect.annotation.ExceptionProxy;
 public class UserDetailsPageObject extends UserDetailsPageFactory {
 
     String xpathNotificationLine = ".//*[@id='ng-app']//span[contains(text(),'%s')]";
-    String xpathUserNameValue = ".//*[@id='ng-app']//p[contains(text(),'%s')]";
+    String xpathUserNameValue = ".//*[@id='ng-app']//span[contains(text(),'%s')]";
     String xpathReadState = "//div[@class='message unreadMessage ng-scope']";
 
 
