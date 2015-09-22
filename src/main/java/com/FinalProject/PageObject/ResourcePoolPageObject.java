@@ -1,6 +1,7 @@
 package com.FinalProject.PageObject;
 
 import com.FinalProject.PageFactory.ResourcePoolsPageFactory;
+import com.FinalProject.Utilities.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -84,7 +85,7 @@ public class ResourcePoolPageObject extends ResourcePoolsPageFactory {
     }
 
     public boolean checkDeleteFlareTitle() {
-
+        Utilities.waitForElementDisplayed(getDriver(),deleteResourceFlareTittle);
         return (deleteResourceFlareTittle.isDisplayed());
 
     }
