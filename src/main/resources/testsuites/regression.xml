@@ -1,0 +1,67 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="regression" verbose="1">
+
+    <parameter name="cc_url" value="https://10.111.2.7"/>
+    <parameter name="implicit_time_out" value="30"/>
+
+    <test name="regression">
+
+        <!--TC01- Log In-->
+        <parameter name="tc01_user" value="root"/>
+        <parameter name="tc01_password" value="meds22"/>
+
+        <!--TC02- Add a Resource Pool-->
+        <parameter name="tc02_user" value="root"/>
+        <parameter name="tc02_password" value="meds22"/>
+        <parameter name="tc02_resource_pool_name" value="TestResourceName"/>
+        <parameter name="tc02_resource_pool_desc" value="TestResourceDesc"/>
+
+        <!--TC03- Delete a Resource Pool-->
+        <parameter name="tc03_user" value="root"/>
+        <parameter name="tc03_password" value="meds22"/>
+        <parameter name="tc03_resource_pool_name" value="TestResourceName"/>
+
+        <!--TC05- Change Language to Spanish-->
+        <parameter name="tc05_user" value="root"/>
+        <parameter name="tc05_password" value="meds22"/>
+
+        <!--TC06- Change Language to English-->
+        <parameter name="tc06_user" value="root"/>
+        <parameter name="tc06_password" value="meds22"/>
+
+        <!--TC07- Read Notification-->
+        <parameter name="tc07_user" value="root"/>
+        <parameter name="tc07_password" value="meds22"/>
+
+        <!--TC08- Delete Notifications	-->
+        <parameter name="tc08_user" value="root"/>
+        <parameter name="tc08_password" value="meds22"/>
+
+        <!--TC09- Add a Host-->
+        <parameter name="tc09_user" value="root"/>
+        <parameter name="tc09_password" value="meds22"/>
+        <parameter name="tc09_address" value="10.111.2.146"/>
+        <parameter name="tc09_hostname" value="ip-10-111-2-146.zenoss.loc"/>
+        <parameter name="tc09_port" value="4979"/>
+        <parameter name="tc09_resource_pool_name" value="default"/>
+        <parameter name="tc09_ram_commitment" value=""/>
+
+        <!--TC10- Delete a Host-->
+        <parameter name="tc10_user" value="root"/>
+        <parameter name="tc10_password" value="meds22"/>
+        <parameter name="tc10_hostname" value="ip-10-111-2-146.zenoss.loc"/>
+
+        <groups>
+            <run>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="com.FinalProject.TestCases.TestCaseLogin"/>
+            <class name="com.FinalProject.TestCases.TestCaseResourcePool"/>
+            <class name="com.FinalProject.TestCases.TestCaseUserDetails"/>
+            <class name="com.FinalProject.TestCases.TestCaseHosts"/>
+        </classes>
+    </test>
+</suite>

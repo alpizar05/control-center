@@ -6,30 +6,36 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by Automation on 30/08/2015.
  */
-public class TopMainMenuPageObject extends TopMainMenuPageFactory{
+public class TopMainMenuPageObject extends TopMainMenuPageFactory {
 
-    public TopMainMenuPageObject (WebDriver driver) { super(driver); }
+    public TopMainMenuPageObject(WebDriver driver) {
+        super(driver);
+    }
 
-    public boolean checkPage(){
+    public boolean checkPage() {
         return logoElment.isDisplayed();
     }
 
 
-    public LoginPageObject clickLogOutButton(){
+    public LoginPageObject clickLogOutButton() {
         return (LoginPageObject) navigateToNextPage(logOutButtonElement, LoginPageObject.class);
     }
 
-    public ApplicationPageObject clickApplicationsLink(){
+    public ApplicationPageObject clickApplicationsLink() {
         return (ApplicationPageObject) navigateToNextPage(applicationsLinkElement, ApplicationPageObject.class);
     }
 
-    public  ResourcePoolPageObject clickResourcePool(){
+    public ResourcePoolPageObject clickResourcePool() {
         return (ResourcePoolPageObject) navigateToNextPage(resourcePoolsLinkElement, ResourcePoolPageObject.class);
     }
-    public  UserDetailsPageObject clickUserDetails(){
+
+    public UserDetailsPageObject clickUserDetails() {
         return (UserDetailsPageObject) navigateToNextPage(UserDetailsLinkElement, UserDetailsPageObject.class);
     }
 
+    public HostsPageObject clickHostsPool() {
+        return (HostsPageObject) navigateToNextPage(hostLinkElement, HostsPageObject.class);
+    }
 
 
 }

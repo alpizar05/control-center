@@ -1,6 +1,10 @@
 package com.FinalProject.Utilities;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 
 /**
@@ -9,7 +13,7 @@ import org.openqa.selenium.*;
 public class ActionBot {
     WebDriver driver;
 
-    public ActionBot(WebDriver driver){
+    public ActionBot(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -19,14 +23,14 @@ public class ActionBot {
         element.sendKeys(text);
     }
 
-    public boolean  findElement(String elementXpath){
+    public boolean findElement(String elementXpath) {
 
         try {
             WebElement poolNameLine;
             poolNameLine = driver.findElement(By.xpath(elementXpath));
             return poolNameLine.isDisplayed();
 
-        }catch (TimeoutException te) {
+        } catch (TimeoutException te) {
             return false;
         }
     }
@@ -34,5 +38,9 @@ public class ActionBot {
     public void click(WebElement element) {
         Utilities.waitForElementDisplayed(driver, element);
         element.click();
+    }
+
+    public void selectElement(String dropdown, String option) {
+        new Select(driver.findElement(By.id(dropdown))).selectByVisibleText(option);
     }
 }

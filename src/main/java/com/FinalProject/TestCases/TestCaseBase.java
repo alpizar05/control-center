@@ -1,30 +1,28 @@
 package com.FinalProject.TestCases;
 
-import com.FinalProject.Data.PublicData;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Automation on 05/07/2015.
- */
 public class TestCaseBase {
 
-    WebDriver driver = null;
+    public static WebDriver driver = null;
 
-    @BeforeTest
-    public void setUp(){
+    @BeforeMethod(alwaysRun = true)
+    @Parameters({"cc_url", "implicit_time_out"})
+    public void setUp(String ccUrl, String implicitTimeout) {
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        driver.get(PublicData.URL);
+        driver.manage().timeouts().implicitlyWait(Integer.parseInt(implicitTimeout), TimeUnit.SECONDS);
+        driver.get(ccUrl);
     }
 
-    @AfterMethod
-    public void tearDown(){
+    @AfterMethod(alwaysRun = true)
+    public void tearDown() {
         driver.quit();
     }
 }

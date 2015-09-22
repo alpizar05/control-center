@@ -14,19 +14,19 @@ public class LoginPageObject extends LoginPageFactory {
         super(driver);
     }
 
-    public boolean checkPage(){
+    public boolean checkPage() {
         return mainLogoElement.isDisplayed();
     }
 
-    public void enterUser(String user){
+    public void enterUser(String user) {
         getActionBot().sendKeys(userFieldElement, user);
     }
 
-    public void enterPassword(String pwd){
+    public void enterPassword(String pwd) {
         getActionBot().sendKeys(pwdFieldElement, pwd);
     }
 
-    public TopMainMenuPageObject clickOnLogIn(){
+    public TopMainMenuPageObject clickOnLogIn() {
         return (TopMainMenuPageObject) navigateToNextPage(logInButtonElement, TopMainMenuPageObject.class);
     }
 

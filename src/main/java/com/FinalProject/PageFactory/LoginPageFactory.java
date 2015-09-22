@@ -6,29 +6,23 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-
-
 /**
  * Created by Automation on 30/08/2015.
  */
-public class LoginPageFactory extends PageBase{
+public class LoginPageFactory extends PageBase {
+
+    @FindBy(className = "loginLogo")
+    protected WebElement mainLogoElement;
+    @FindBy(xpath = ".//*[@id='login']/input [@placeholder='Username']")
+    protected WebElement userFieldElement;
+    @FindBy(xpath = ".//*[@id='login']/input [@placeholder='Password']")
+    protected WebElement pwdFieldElement;
+    @FindBy(xpath = ".//*[@id='login']/button [@type='submit' and contains(text(),'Log In')]")
+    protected WebElement logInButtonElement;
 
     public LoginPageFactory(WebDriver driver) {
         super(driver);
     }
-
-    @FindBy(className = "loginLogo")
-    protected WebElement mainLogoElement;
-
-
-    @FindBy(xpath = ".//*[@id='login']/input [@placeholder='Username']")
-    protected WebElement userFieldElement;
-
-    @FindBy(xpath = ".//*[@id='login']/input [@placeholder='Password']")
-    protected WebElement pwdFieldElement;
-
-    @FindBy(xpath = ".//*[@id='login']/button [@type='submit' and contains(text(),'Log In')]")
-    protected WebElement logInButtonElement;
 
 
 }

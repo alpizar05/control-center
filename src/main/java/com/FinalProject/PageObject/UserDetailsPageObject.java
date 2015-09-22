@@ -1,53 +1,87 @@
 package com.FinalProject.PageObject;
 
 import com.FinalProject.PageFactory.UserDetailsPageFactory;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import sun.reflect.annotation.ExceptionProxy;
 
 /**
  * Created by Automation on 20/09/2015.
  */
-public class UserDetailsPageObject extends UserDetailsPageFactory
-{
+public class UserDetailsPageObject extends UserDetailsPageFactory {
 
     String xpathNotificationLine = ".//*[@id='ng-app']//span[contains(text(),'%s')]";
     String xpathUserNameValue = ".//*[@id='ng-app']//p[contains(text(),'%s')]";
+    String xpathReadState = "//div[@class='message unreadMessage ng-scope']";
 
 
-    public UserDetailsPageObject (WebDriver driver) { super(driver); }
+    public UserDetailsPageObject(WebDriver driver) {
+        super(driver);
+    }
 
-    public boolean checkPage() {return userDetailsTitleElement.isDisplayed();}
+    public boolean checkPage() {
+        return userDetailsTitleElement.isDisplayed();
+    }
 
-    public boolean checkUsernameEnglish() {return englishUserNameLabelElement.isDisplayed();}
+    public boolean checkUsernameEnglish() {
+        return englishUserNameLabelElement.isDisplayed();
+    }
 
-    public boolean checkUsernameSpanish() {return spanishUserNameLabelElement.isDisplayed();}
+    public boolean checkUsernameSpanish() {
+        return spanishUserNameLabelElement.isDisplayed();
+    }
 
-    public boolean checkMessageEnglish() {return englishMessagesLabel.isDisplayed();}
+    public boolean checkMessageEnglish() {
+        return englishMessagesLabel.isDisplayed();
+    }
 
-    public boolean checkMessageLabelSpanish() {return spanishMessagesLabel.isDisplayed();}
+    public boolean checkMessageLabelSpanish() {
+        return spanishMessagesLabel.isDisplayed();
+    }
 
-    public boolean checkSpanishClearButton() {return spanishRadioElement.isDisplayed();}
+    public boolean checkSpanishClearButton() {
+        return spanishRadioElement.isDisplayed();
+    }
 
-    public boolean checkEnglishClearButton() {return englishRadioElement.isDisplayed();}
+    public boolean checkEnglishClearButton() {
+        return englishRadioElement.isDisplayed();
+    }
 
-    public void clickSpanishButton(){
+    public void clickSpanishButton() {
         getActionBot().click(spanishRadioElement);
     }
 
-    public void clickEnglishhButton(){
+    public void clickEnglishhButton() {
         getActionBot().click(englishRadioElement);
     }
 
-    public void clickCloseButton(){
+    public void clickCloseButton() {
         getActionBot().click(userDetailsCloseWindowButton);
     }
 
     public boolean checkUserNameValue(String currentUser) {
-        return (getActionBot().findElement(String.format(xpathUserNameValue,currentUser)));
+        return (getActionBot().findElement(String.format(xpathUserNameValue, currentUser)));
     }
 
-    public boolean checkNotification(String message){
-        return (getActionBot().findElement(String.format(xpathNotificationLine,message)));
+    public void readNotification(){
+        notification.click();
+    }
 
+    public void deleteNotifications(){
+        deleteButton.click();
+    }
+
+    public boolean isRead(){
+        try {
+            notification.findElement(By.xpath(xpathReadState));
+            return true;
+        } catch (Exception e){
+            return false;
+        }
+    }
+
+    public boolean isNotificationDisplayed(){
+        return notification.isDisplayed();
     }
 
 }

@@ -12,7 +12,7 @@ public class ApplicationPageObject extends ApplicationsPageFactory {
         super(driver);
     }
 
-    public boolean checkPage(){
+    public boolean checkPage() {
         return applicationTitleElement.isDisplayed();
     }
 

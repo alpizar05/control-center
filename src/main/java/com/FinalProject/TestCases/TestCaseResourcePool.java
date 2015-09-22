@@ -1,26 +1,28 @@
 package com.FinalProject.TestCases;
 
-import com.FinalProject.Data.PublicData;
 import com.FinalProject.PageObject.LoginPageObject;
 import com.FinalProject.PageObject.ResourcePoolPageObject;
 import com.FinalProject.PageObject.TopMainMenuPageObject;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-/**
- * Created by Automation on 31/08/2015.
- */
+@Test(groups = {"resource_pool"})
 public class TestCaseResourcePool extends TestCaseBase {
 
-    @Test
-    public void AddResourcePool(){
-
-        /*Parametros*/
-        String user = PublicData.USER;
-        String password = PublicData.PASS;
-        String testResourceName = "TestResourceName";
-        String testResourceDesc = "TestResourceDesc";
+    /**
+     * Author: Wendy Sandoval
+     *
+     * @param user
+     * @param password
+     * @param testResourceName
+     * @param testResourceDesc
+     * @throws Exception
+     */
+    @Test(groups = {"tc02"}, priority = 0)
+    @Parameters({"tc02_user", "tc02_password", "tc02_resource_pool_name", "tc02_resource_pool_desc"})
+    public void AddResourcePool(String user, String password, String testResourceName, String testResourceDesc) throws Exception {
 
         LoginPageObject controlCenter = PageFactory.initElements(driver, LoginPageObject.class);
 
@@ -59,14 +61,17 @@ public class TestCaseResourcePool extends TestCaseBase {
     }
 
 
-
-    @Test
-    public void DeleteResourcePool() {
-
-         /*Parametros*/
-        String user = PublicData.USER;
-        String password = PublicData.PASS;
-        String testResourceName = "TestResourceName";
+    /**
+     * Author: Wendy Sandoval
+     *
+     * @param user
+     * @param password
+     * @param testResourceName
+     * @throws Exception
+     */
+    @Test(groups = {"tc03"}, priority = 2)
+    @Parameters({"tc03_user", "tc03_password", "tc03_resource_pool_name"})
+    public void DeleteResourcePool(String user, String password, String testResourceName) throws Exception {
 
         LoginPageObject controlCenter = PageFactory.initElements(driver, LoginPageObject.class);
 
@@ -98,8 +103,6 @@ public class TestCaseResourcePool extends TestCaseBase {
         LoginPageObject loginPage = topMainMenu.clickLogOutButton();
         //Log In page is displayed
         Assert.assertTrue(loginPage.checkPage(), "Log Out Action is failing");
-
-
 
 
     }
