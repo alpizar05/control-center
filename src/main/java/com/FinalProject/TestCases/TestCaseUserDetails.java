@@ -1,8 +1,10 @@
 package com.FinalProject.TestCases;
 
+import com.FinalProject.PageObject.HostsPageObject;
 import com.FinalProject.PageObject.LoginPageObject;
 import com.FinalProject.PageObject.TopMainMenuPageObject;
 import com.FinalProject.PageObject.UserDetailsPageObject;
+import com.FinalProject.Utilities.Utilities;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
@@ -17,9 +19,9 @@ public class TestCaseUserDetails extends TestCaseBase {
      * @param user
      * @param password
      */
-    @Test(groups = {"tc05"})
+    @Test(groups = {"tc05"}, priority = 0)
     @Parameters({"tc05_user", "tc05_password"})
-    public void ChangeLanguageSpanish(String user, String password) {
+    public void ChangeLanguageSpanish(String user, String password) throws Exception {
 
         LoginPageObject controlCenter = PageFactory.initElements(driver, LoginPageObject.class);
 
@@ -53,9 +55,9 @@ public class TestCaseUserDetails extends TestCaseBase {
      * @param user
      * @param password
      */
-    @Test(groups = {"tc06"})
+    @Test(groups = {"tc06"}, priority = 1)
     @Parameters({"tc06_user", "tc06_password"})
-    public void ChangeLanguageEnglish(String user, String password) {
+    public void ChangeLanguageEnglish(String user, String password) throws Exception {
 
         LoginPageObject controlCenter = PageFactory.initElements(driver, LoginPageObject.class);
 
@@ -89,10 +91,11 @@ public class TestCaseUserDetails extends TestCaseBase {
      * @param user
      * @param password
      */
-    @Test(groups = {"tc07"}, dependsOnGroups = "tc09")
-    @Parameters({"tc07_user", "tc07_password"})
-    public void readNotification(String user, String password) {
+    @Test(groups = {"tc07"}, priority = 2)
+    @Parameters({"tc07_user", "tc07_password", "tc07_resource_pool_name", "tc07_address", "tc07_hostname", "tc07_port", "tc07_ram_commitment"})
+    public void readNotification(String user, String password, String resourceName, String ipAddress, String hostname, String port, String ramCommitment) throws Exception {
 
+        /*Pre steps*/
         LoginPageObject controlCenter = PageFactory.initElements(driver, LoginPageObject.class);
 
         //Enter user name
@@ -104,6 +107,37 @@ public class TestCaseUserDetails extends TestCaseBase {
         TopMainMenuPageObject topMainMenu = controlCenter.clickOnLogIn();
         Assert.assertTrue(topMainMenu.checkPage(), "Top main menu page was not displayed");
 
+        //Click on Hosts option
+        HostsPageObject hosts = topMainMenu.clickHostsPool();
+        Assert.assertTrue(hosts.checkPage(), "Hosts page is not displayed");
+
+        //Click on Add host
+        hosts.clickAddPool();
+        Assert.assertTrue(hosts.checkAddWindowTittle(), "Add host Window is not displayed");
+
+        //Enter Host info
+        hosts.enterHostNameAndPort(ipAddress, port);
+        hosts.enterPoolDescription(resourceName);
+        hosts.enterRamCommitment(ramCommitment);
+
+        //Click on submit
+        hosts.clickSubmitHost();
+        Assert.assertTrue(hosts.isHostDisplayed(hostname), "Host was not added");
+
+        //Click on Hosts option
+        hosts = topMainMenu.clickHostsPool();
+        Assert.assertTrue(hosts.checkPage(), "Hosts page is not displayed");
+
+        //click delete button
+        hosts.clickDeleteHost(hostname);
+        Assert.assertTrue(hosts.checkDeleteConfirmationMessage(hostname), "Remove Host modal is not displayed");
+
+        //Click remove button
+        hosts.clickRemoveConfirmationButton();
+        Utilities.wait(3);
+        Assert.assertFalse(hosts.isHostDisplayed(hostname));
+
+        /*TC steps*/
         //Click on User Details  menu option
         UserDetailsPageObject userDetails = topMainMenu.clickUserDetails();
         Assert.assertTrue(userDetails.checkPage(), "User details page was not displayed");
@@ -119,10 +153,11 @@ public class TestCaseUserDetails extends TestCaseBase {
      * @param user
      * @param password
      */
-    @Test(groups = {"tc08"}, dependsOnGroups = "tc09")
-    @Parameters({"tc08_user", "tc08_password"})
-    public void deleteNotification(String user, String password) {
+    @Test(groups = {"tc08"}, priority = 2)
+    @Parameters({"tc08_user", "tc08_password", "tc08_resource_pool_name", "tc08_address", "tc08_hostname", "tc08_port", "tc08_ram_commitment"})
+    public void deleteNotification(String user, String password, String resourceName, String ipAddress, String hostname, String port, String ramCommitment) throws Exception {
 
+        /*Pre steps*/
         LoginPageObject controlCenter = PageFactory.initElements(driver, LoginPageObject.class);
 
         //Enter user name
@@ -134,13 +169,44 @@ public class TestCaseUserDetails extends TestCaseBase {
         TopMainMenuPageObject topMainMenu = controlCenter.clickOnLogIn();
         Assert.assertTrue(topMainMenu.checkPage(), "Top main menu page was not displayed");
 
+        //Click on Hosts option
+        HostsPageObject hosts = topMainMenu.clickHostsPool();
+        Assert.assertTrue(hosts.checkPage(), "Hosts page is not displayed");
+
+        //Click on Add host
+        hosts.clickAddPool();
+        Assert.assertTrue(hosts.checkAddWindowTittle(), "Add host Window is not displayed");
+
+        //Enter Host info
+        hosts.enterHostNameAndPort(ipAddress, port);
+        hosts.enterPoolDescription(resourceName);
+        hosts.enterRamCommitment(ramCommitment);
+
+        //Click on submit
+        hosts.clickSubmitHost();
+        Assert.assertTrue(hosts.isHostDisplayed(hostname), "Host was not added");
+
+        //Click on Hosts option
+        hosts = topMainMenu.clickHostsPool();
+        Assert.assertTrue(hosts.checkPage(), "Hosts page is not displayed");
+
+        //click delete button
+        hosts.clickDeleteHost(hostname);
+        Assert.assertTrue(hosts.checkDeleteConfirmationMessage(hostname), "Remove Host modal is not displayed");
+
+        //Click remove button
+        hosts.clickRemoveConfirmationButton();
+        Utilities.wait(3);
+        Assert.assertFalse(hosts.isHostDisplayed(hostname));
+
+        /*TC steps*/
         //Click on User Details  menu option
         UserDetailsPageObject userDetails = topMainMenu.clickUserDetails();
         Assert.assertTrue(userDetails.checkPage(), "User details page was not displayed");
 
         //Delete notifications
         userDetails.deleteNotifications();
-        Assert.assertTrue(userDetails.isNotificationDisplayed(), "Notification were not removed");
+        Assert.assertFalse(userDetails.isNotificationDisplayed(), "Notification were not removed");
     }
 
 }

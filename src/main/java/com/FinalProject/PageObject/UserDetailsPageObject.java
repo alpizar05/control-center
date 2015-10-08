@@ -1,6 +1,7 @@
 package com.FinalProject.PageObject;
 
 import com.FinalProject.PageFactory.UserDetailsPageFactory;
+import com.FinalProject.Utilities.Utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import sun.reflect.annotation.ExceptionProxy;
@@ -19,7 +20,8 @@ public class UserDetailsPageObject extends UserDetailsPageFactory {
         super(driver);
     }
 
-    public boolean checkPage() {
+    public boolean checkPage() throws Exception {
+        Utilities.wait(10);
         return userDetailsTitleElement.isDisplayed();
     }
 
@@ -81,7 +83,11 @@ public class UserDetailsPageObject extends UserDetailsPageFactory {
     }
 
     public boolean isNotificationDisplayed(){
-        return notification.isDisplayed();
+        try {
+            return notification.isDisplayed();
+        } catch (Exception e){
+            return  false;
+        }
     }
 
 }
