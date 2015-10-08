@@ -2,7 +2,7 @@
 
 <suite name="regression" verbose="1">
 
-    <parameter name="cc_url" value="https://10.111.2.99"/>
+    <parameter name="cc_url" value="https://10.111.22.191"/>
     <parameter name="implicit_time_out" value="30"/>
 
     <test name="regression">
@@ -33,8 +33,8 @@
         <!--TC07- Read Notification-->
         <parameter name="tc07_user" value="root"/>
         <parameter name="tc07_password" value="meds22"/>
-        <parameter name="tc07_address" value="10.111.2.201"/>
-        <parameter name="tc07_hostname" value="ip-10-111-2-201"/>
+        <parameter name="tc07_address" value="10.111.22.93"/>
+        <parameter name="tc07_hostname" value="ip-10-111-22-93"/>
         <parameter name="tc07_port" value="4979"/>
         <parameter name="tc07_resource_pool_name" value="default"/>
         <parameter name="tc07_ram_commitment" value=""/>
@@ -42,8 +42,8 @@
         <!--TC08- Delete Notifications	-->
         <parameter name="tc08_user" value="root"/>
         <parameter name="tc08_password" value="meds22"/>
-        <parameter name="tc08_address" value="10.111.2.173"/>
-        <parameter name="tc08_hostname" value="ip-10-111-2-173"/>
+        <parameter name="tc08_address" value="10.111.22.55"/>
+        <parameter name="tc08_hostname" value="ip-10-111-22-55"/>
         <parameter name="tc08_port" value="4979"/>
         <parameter name="tc08_resource_pool_name" value="default"/>
         <parameter name="tc08_ram_commitment" value=""/>
@@ -51,8 +51,8 @@
         <!--TC09- Add a Host-->
         <parameter name="tc09_user" value="root"/>
         <parameter name="tc09_password" value="meds22"/>
-        <parameter name="tc09_address" value="10.111.2.99"/>
-        <parameter name="tc09_hostname" value="ip-10-111-2-99"/>
+        <parameter name="tc09_address" value="10.111.22.191"/>
+        <parameter name="tc09_hostname" value="ip-10-111-22-191"/>
         <parameter name="tc09_port" value="4979"/>
         <parameter name="tc09_resource_pool_name" value="default"/>
         <parameter name="tc09_ram_commitment" value=""/>
@@ -60,7 +60,7 @@
         <!--TC10- Delete a Host-->
         <parameter name="tc10_user" value="root"/>
         <parameter name="tc10_password" value="meds22"/>
-        <parameter name="tc10_hostname" value="ip-10-111-2-99"/>
+        <parameter name="tc10_hostname" value="ip-10-111-22-191"/>
 
         <groups>
             <run>
